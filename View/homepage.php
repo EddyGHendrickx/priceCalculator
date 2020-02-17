@@ -9,13 +9,10 @@
 </head>
 <body>
 
-<?php require 'includes/header.php' ?>
+<?php require 'includes/header.php'; ?>
 
 <section>
-    <h4>Hello <?php echo $user->getName() ?>,</h4>
-    Customer Search
-    <input type="text" name="customerSearch">
-    <label for="customerSearch"></label>
+    <h4>Hello <?php echo $User[6]->getGroupId() ?>,</h4>
     <form action="" method="post">
         <label for="customers">Choose a customer</label>
 

@@ -1,24 +1,33 @@
 <?php
-declare(strict_types = 1);
+declare(strict_types=1);
 ini_set('display_errors', '1');
 ini_set('display_startup_errors', '1');
 error_reporting(E_ALL);
 
 
-$json = file_get_contents('JSON/customers.json');
-$CustomerData = json_decode($json, true);
 class HomepageController
 {
     //render function with both $_GET and $_POST vars available if it would be needed.
     public function render(array $GET, array $POST)
     {
         //this is just example code, you can remove the line below
-        $user = new User('John Smith');
 
         //you should not echo anything inside your controller - only assign vars here
         // then the view will actually display them.
 
         //load the view
+
+        $json = file_get_contents('JSON/customers.json');
+        $CustomerData = json_decode($json, true);
+        $json = file_get_contents('JSON/products.json');
+        $ProductData = json_decode($json, true);
+        for ($i = 0; count($CustomerData) > $i; $i++) {
+            $User[$i] = new User($CustomerData[$i]['name'], strval($CustomerData[$i]['id']), strval( $CustomerData[$i]['group_id']));
+        }
+        for ($i = 0; count($ProductData) > $i; $i++) {
+            $Product[$i] = new Products($ProductData[$i]['name'], strval($ProductData[$i]['id']), strval($ProductData[$i]['description']), strval($ProductData[$i]['price']));
+        }
+        
         require 'View/homepage.php';
     }
 }
