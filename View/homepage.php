@@ -17,7 +17,7 @@
 
         <select id="customers" name="customers">
             <?php for ($i = 0; count($User) > $i; $i++) : ?>
-                <option value="<?php $User[$i]->getName(); ?>"><?php echo $User[$i]->getName(); ?></option>
+                <option value="<?php echo $User[$i]->getGroupId(); ?>"><?php echo $User[$i]->getName(); ?></option>
             <?php endfor ?>
         </select>
     </br></br></br></br>
@@ -25,10 +25,10 @@
 
         <select id="products" name="products">
             <?php for ($i = 0; count($Product) > $i; $i++) : ?>
-                <option value="<?php $Product[$i]->getName(); ?>"><?php echo $Product[$i]->getName(); ?></option>
+                <option value="<?php echo $Product[$i]->getName(); ?>" name="products"><?php echo $Product[$i]->getName(); ?></option>
             <?php endfor ?>
         </select>
-        <button id="run" type="submit" name="run">SEARCH</button>
+        <button id="run" type="submit" name="submit">SEARCH</button>
     </form>
     <p>Put your content here.</p>
 </section>
