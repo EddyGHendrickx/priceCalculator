@@ -17,11 +17,12 @@ class HomepageController
 
         //load the view
 
-        $json = file_get_contents('JSON/customers.json');
-        $CustomerData = json_decode($json, true);
-
-        $json = file_get_contents('JSON/products.json');
-        $ProductData = json_decode($json, true);
+        $jsonCustomer = file_get_contents('JSON/customers.json');
+        $CustomerData = json_decode($jsonCustomer, true);
+        $jsonGroup = file_get_contents('JSON/groups.json');
+        $groupData = json_decode($jsonGroup, true);
+        $jsonProduct = file_get_contents('JSON/products.json');
+        $ProductData = json_decode($jsonProduct, true);
 
         for ($i = 0; count($CustomerData) > $i; $i++) {
             $User[$i] = new User($CustomerData[$i]['name'], strval($CustomerData[$i]['id']), strval( $CustomerData[$i]['group_id']));
@@ -31,17 +32,14 @@ class HomepageController
             $Product[$i] = new Products($ProductData[$i]['name'], strval($ProductData[$i]['id']), strval($ProductData[$i]['description']), strval($ProductData[$i]['price']));
         }
 
-        if (!isset($_POST['product'])){
-           $_POST['product'] = "test";
-        } else {
-            var_dump($_POST['product']);
 
-        }
-        if (!isset($_POST['customers'])){
-            $_POST['customers'] = "test";
-        } else {
-            var_dump($_POST['customers']);
-        }
+
+
+        $groupID = $_POST['customers'] ;
+        $originalPrice = $_POST['product'];
+
+
+
 
 
         require 'View/homepage.php';
