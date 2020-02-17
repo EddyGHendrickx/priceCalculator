@@ -12,17 +12,23 @@
 <?php require 'includes/header.php'; ?>
 
 <section>
-    <h4>Hello <?php echo $User[6]->getGroupId() ?>,</h4>
     <form action="" method="post">
         <label for="customers">Choose a customer</label>
 
-        <select id="customers">
-            <?php echo $CustomerData ?>
-            <?php for ($i = 0; count($CustomerData) > $i; $i++) : ?>
-                <option value="<?php $CustomerData[$i]['name'] ?>"><?php echo $CustomerData[$i]['name'] ?></option>
+        <select id="customers" name="customers">
+            <?php for ($i = 0; count($User) > $i; $i++) : ?>
+                <option value="<?php $User[$i]->getName(); ?>"><?php echo $User[$i]->getName(); ?></option>
             <?php endfor ?>
         </select>
-        <button id="run" name="run">SEARCH</button>
+    </br></br></br></br>
+        <label for="customers">Choose a product</label>
+
+        <select id="products" name="products">
+            <?php for ($i = 0; count($Product) > $i; $i++) : ?>
+                <option value="<?php $Product[$i]->getName(); ?>"><?php echo $Product[$i]->getName(); ?></option>
+            <?php endfor ?>
+        </select>
+        <button id="run" type="submit" name="run">SEARCH</button>
     </form>
     <p>Put your content here.</p>
 </section>

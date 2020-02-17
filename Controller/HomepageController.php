@@ -27,7 +27,21 @@ class HomepageController
         for ($i = 0; count($ProductData) > $i; $i++) {
             $Product[$i] = new Products($ProductData[$i]['name'], strval($ProductData[$i]['id']), strval($ProductData[$i]['description']), strval($ProductData[$i]['price']));
         }
-        
+
+        if (!isset($_POST['products'])){
+           echo $_POST['products'];
+        } else {
+            var_dump($_POST['products']);
+            var_dump($_POST['run']);
+
+        }
+        if (!isset($_POST['customers'])){
+            $_POST['customers'] = "";
+        } else {
+            var_dump($_POST['customers']);
+        }
+
+
         require 'View/homepage.php';
     }
 }
