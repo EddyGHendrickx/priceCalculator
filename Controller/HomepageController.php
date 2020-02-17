@@ -1,6 +1,12 @@
 <?php
 declare(strict_types = 1);
+ini_set('display_errors', '1');
+ini_set('display_startup_errors', '1');
+error_reporting(E_ALL);
 
+
+$json = file_get_contents('JSON/customers.json');
+$CustomerData = json_decode($json, true);
 class HomepageController
 {
     //render function with both $_GET and $_POST vars available if it would be needed.
@@ -16,3 +22,4 @@ class HomepageController
         require 'View/homepage.php';
     }
 }
+
