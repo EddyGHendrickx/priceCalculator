@@ -31,21 +31,16 @@ class HomepageController
             $Product[$i] = new Products($ProductData[$i]['name'], strval($ProductData[$i]['id']), strval($ProductData[$i]['description']), strval($ProductData[$i]['price']));
         }
 
-        if (!isset($_POST['products'])){
-           $_POST['products'] = "test";
+        if (!isset($_POST['product'])){
+           $_POST['product'] = "test";
         } else {
-            var_dump($_POST['products']);
+            var_dump($_POST['product']);
 
         }
         if (!isset($_POST['customers'])){
             $_POST['customers'] = "test";
         } else {
             var_dump($_POST['customers']);
-        }
-        if (!isset($_POST['submit'])){
-            $_POST['submit'] = "test";
-        } else {
-            var_dump($_POST['submit']);
         }
 
 

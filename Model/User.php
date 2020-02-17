@@ -67,4 +67,8 @@ class Products
         return $this->price;
     }
 
+    public function getDiscount(){
+
+    }
+
 }
