@@ -23,7 +23,7 @@
     </br></br></br></br>
         <label for="customers">Choose a product</label>
 
-        <select id="products" name="products">
+        <select id="products" name="product">
             <?php for ($i = 0; count($Product) > $i; $i++) : ?>
                 <option value="<?php echo $Product[$i]->getName(); ?>" name="products"><?php echo $Product[$i]->getName(); ?></option>
             <?php endfor ?>
