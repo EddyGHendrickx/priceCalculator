@@ -26,8 +26,19 @@ class HomepageController
 
 
 
+        if (isset($_POST['customers'])){
+            $groupID = $_POST['customers'];
+        }else {
+            $groupID = "";
 
-        $groupID = $_POST['customers'];
+        }
+
+        if (isset($_POST['product'])){
+            $originalPrice = $_POST['product'];
+        } else {
+            $originalPrice = "";
+        }
+
         $groupArray = [];
 
 
@@ -74,7 +85,6 @@ class HomepageController
         var_dump($groupArray);
 
 
-        $originalPrice = $_POST['product'];
 
 
         require 'View/homepage.php';

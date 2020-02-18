@@ -11,12 +11,11 @@ class User
 
 
 
-    public function __construct(string $name, string $id, string $group_id, array $groupChain)
+    public function __construct(string $name, string $id, string $group_id)
     {
         $this->name = $name;
         $this->id = $id;
         $this->group_id = $group_id;
-        $this->groupChain = $groupChain;
     }
 
     public function getName(): string
