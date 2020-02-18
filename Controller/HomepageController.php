@@ -35,10 +35,17 @@ class HomepageController
 //        for ($i = 0; count($groupData) > $i; $i++) {
 //            $Group[$i] = new Group(strval($groupData[$i]['id']), strval($groupData[$i]['name']), strval($groupData[$i]['discount']), strval($groupData[$i]['group_id']));
 //        }
-
-
+            
 
         $groupID = $_POST['customers'] ;
+        function getGroupId($inputGroupID,$groupDataArray){
+            foreach($groupDataArray as $group){
+                if ($group['id']==$inputGroupID){
+                    return $group['group_id'];
+                    }
+            }
+
+        }
         $originalPrice = $_POST['product'];
 
 
