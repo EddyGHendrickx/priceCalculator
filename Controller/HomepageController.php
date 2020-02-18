@@ -38,25 +38,35 @@ class HomepageController
 
 
         $groupID = $_POST['customers'];
+        $groupArray = [];
 
-//
-//        function getGroupId(string $inputGroupID, array $groupDataArray) : array
-//        {
-//
-//            foreach ($groupDataArray as $group) {
-//                if ($group['id'] == $inputGroupID) {
-//                    if (isset($group['group_id'])) {
-//                        getGroupID(strval($group['group_id']), $groupDataArray);
-//                        array_push($newArray, $group);
-//                    } else {
-//                        array_push($newArray, $group);
-//                    }
-//                }
-//            }
-//            return $newArray;
-//
-//        }
-//       $theGroups = getGroupId(strval($groupID), $groupData);
+
+
+        function findGroup ($id, $array)
+        {
+            foreach ($array as $group) {
+                if ($group['id'] == $id) {
+                    return $group;
+                }
+            }
+        }
+
+        while ($groupID !== null)
+        {
+            $newgroup = findGroup($groupID, $groupData);
+            array_push($groupArray,$newgroup);
+            if (isset($newgroup['group_id']))
+            {
+                $groupID = $newgroup['group_id'];
+            }
+            else
+            {
+                $groupID = null;
+            }
+        }
+
+        var_dump($groupArray);
+
 
         $originalPrice = $_POST['product'];
 
