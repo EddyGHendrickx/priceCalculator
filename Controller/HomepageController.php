@@ -32,6 +32,9 @@ class HomepageController
             $Product[$i] = new Products($ProductData[$i]['name'], strval($ProductData[$i]['id']), strval($ProductData[$i]['description']), strval($ProductData[$i]['price']));
         }
 
+        for ($i = 0; count($groupData) > $i; $i++) {
+            $Product[$i] = new Group($groupData[$i]['id'], strval($groupData[$i]['name']), strval($groupData[$i]['discount']), strval($groupData[$i]['group_id']));
+        }
 
 
 
