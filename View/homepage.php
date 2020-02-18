@@ -30,6 +30,9 @@
         </select>
         <button id="run" type="submit" name="submit">SEARCH</button>
     </form>
+
+    <p><?php echo $originalPrice ?? "" ?></p>
+
     <p>Put your content here.</p>
 </section>
 <?php require 'includes/footer.php' ?>

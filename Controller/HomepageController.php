@@ -25,29 +25,40 @@ class HomepageController
         $ProductData = json_decode($jsonProduct, true);
 
         for ($i = 0; count($CustomerData) > $i; $i++) {
-            $User[$i] = new User($CustomerData[$i]['name'], strval($CustomerData[$i]['id']), strval( $CustomerData[$i]['group_id']));
+//            for ($i = 0; count($groupData) > $i; $i++) {
+//                $Group[$i] = new Group(strval($groupData[$i]['id']), strval($groupData[$i]['name']), strval($groupData[$i]['discount']), strval($groupData[$i]['group_id']));
+//            }
+            $User[$i] = new User($CustomerData[$i]['name'], strval($CustomerData[$i]['id']), strval($CustomerData[$i]['group_id']));
+
         }
 
         for ($i = 0; count($ProductData) > $i; $i++) {
             $Product[$i] = new Products($ProductData[$i]['name'], strval($ProductData[$i]['id']), strval($ProductData[$i]['description']), strval($ProductData[$i]['price']));
         }
 
-//        for ($i = 0; count($groupData) > $i; $i++) {
-//            $Group[$i] = new Group(strval($groupData[$i]['id']), strval($groupData[$i]['name']), strval($groupData[$i]['discount']), strval($groupData[$i]['group_id']));
+
+        $groupID = $_POST['customers'];
+
+//
+//        function getGroupId(string $inputGroupID, array $groupDataArray) : array
+//        {
+//
+//            foreach ($groupDataArray as $group) {
+//                if ($group['id'] == $inputGroupID) {
+//                    if (isset($group['group_id'])) {
+//                        getGroupID(strval($group['group_id']), $groupDataArray);
+//                        array_push($newArray, $group);
+//                    } else {
+//                        array_push($newArray, $group);
+//                    }
+//                }
+//            }
+//            return $newArray;
+//
 //        }
-            
+//       $theGroups = getGroupId(strval($groupID), $groupData);
 
-        $groupID = $_POST['customers'] ;
-        function getGroupId($inputGroupID,$groupDataArray){
-            foreach($groupDataArray as $group){
-                if ($group['id']==$inputGroupID){
-                    return $group['group_id'];
-                    }
-            }
-
-        }
         $originalPrice = $_POST['product'];
-
 
 
         require 'View/homepage.php';
