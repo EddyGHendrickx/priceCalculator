@@ -7,13 +7,16 @@ class User
     private $name;
     private $id;
     private $group_id;
+    private $groupChain;
 
 
-    public function __construct(string $name, string $id, string $group_id)
+
+    public function __construct(string $name, string $id, string $group_id, array $groupChain)
     {
         $this->name = $name;
         $this->id = $id;
         $this->group_id = $group_id;
+        $this->groupChain = $groupChain;
     }
 
     public function getName(): string
