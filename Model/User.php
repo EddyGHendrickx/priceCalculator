@@ -33,7 +33,7 @@ class User
         return $this->group_id;
     }
 
-    public function getPrice($product)
+    public function calculatePrice($price)
     {
 
     }
@@ -78,14 +78,14 @@ class Group
     private $id;
     private $name;
     private $discount;
+    private $discountType;
     private $group_id;
+    private $groupChain;
 
-    public function __construct(string $id, string $name, string $discount, string $group_id)
+    public function __construct(string $id, string $name)
     {
         $this-> id = $id;
         $this-> name = $name;
-        $this-> discount = $discount;
-        $this-> group_id = $group_id;
     }
 
     public function getId(){
@@ -103,5 +103,31 @@ class Group
     public function getGroupId(){
         return $this->group_id;
     }
+    public function setGroupId($inputGroupID){
+        $this->group_id = $inputGroupID;
+    }
+
+    public function setDiscountType($typeOfDiscount)
+    {
+        $this->discountType = $typeOfDiscount;
+    }
+
+    public function setDiscountAmount($discountAmount)
+    {
+        $this->discount = $discountAmount;
+    }
+
+    public function getGroupChain($inputID, $groupsArray)
+    {
+        if (isset($this->group_id)){
+            foreach ($groupsArray as $group){
+                if ($group['id'] == $inputID){
+                    return $group;
+                }
+            }
+        }
+    }
+
+
 }
 

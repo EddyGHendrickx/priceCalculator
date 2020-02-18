@@ -25,15 +25,13 @@ class HomepageController
         $ProductData = json_decode($jsonProduct, true);
 
 
-
-        if (isset($_POST['customers'])){
+        if (isset($_POST['customers'])) {
             $groupID = $_POST['customers'];
-        }else {
+        } else {
             $groupID = "";
-
         }
 
-        if (isset($_POST['product'])){
+        if (isset($_POST['product'])) {
             $originalPrice = $_POST['product'];
         } else {
             $originalPrice = "";
@@ -44,35 +42,30 @@ class HomepageController
 
         // groupId in this case refers to the group ID, which we know from user input (group id is linked).
         // groupsArray refers to the associative array which we converted from groups.json (we named it $groupData some previous lines)
-        function findGroup ($groupId, $groupsArray)
-        {
-            foreach ($groupsArray as $group) {
-                if ($group['id'] == $groupId) {
-                    return $group;
-                }
-            }
-        }
-
-
-
-        // Using the findGroup function which returns a single group, which the user belongs to
-        // we find other groups, which are linked together.
-        while ($groupID !== null)
-        {
-            $groupsChain = findGroup($groupID, $groupData);
-
-            array_push($groupArray,$groupsChain);
-            if (isset($groupsChain['group_id']))
-            {
-                // If the current group over which we are looping has a group ID
-                // we override the groupID variable with the new groupID of the former group.
-                $groupID = $groupsChain['group_id'];
-            }
-            else
-            {
-                $groupID = null;
-            }
-        }
+//        function findGroup($groupId, $groupsArray)
+//        {
+//            foreach ($groupsArray as $group) {
+//                if ($group['id'] == $groupId) {
+//                    return $group;
+//                }
+//            }
+//        }
+//
+//
+//        // Using the findGroup function which returns a single group, which the user belongs to
+//        // we find other groups, which are linked together.
+//        while ($groupID !== null) {
+//            $groupsChain = findGroup($groupID, $groupData);
+//
+//            array_push($groupArray, $groupsChain);
+//            if (isset($groupsChain['group_id'])) {
+//                // If the current group over which we are looping has a group ID
+//                // we override the groupID variable with the new groupID of the former group.
+//                $groupID = $groupsChain['group_id'];
+//            } else {
+//                $groupID = null;
+//            }
+//        }
 
 
         for ($i = 0; count($CustomerData) > $i; $i++) {
@@ -82,9 +75,45 @@ class HomepageController
         for ($i = 0; count($ProductData) > $i; $i++) {
             $Product[$i] = new Products($ProductData[$i]['name'], strval($ProductData[$i]['id']), strval($ProductData[$i]['description']), strval($ProductData[$i]['price']));
         }
-        var_dump($groupArray);
+
+        for ($i = 0; count($groupData) > $i; $i++) {
+            $Group[$i] = new Group(strval($groupData[$i]['id']), $groupData[$i]['name']);
+        }
 
 
+        for ($i = 0; count($groupData) > $i; $i++) {
+            if (isset($groupData[$i]['group_id'])) {
+                $Group[$i]->setGroupId($groupData[$i]['group_id']);
+            }
+            if (isset($groupData[$i]['fixed_discount'])){
+                $Group[$i]->setDiscountType("fixed_discount");
+            } else {
+                $Group[$i]->setDiscountType("variable_discount");
+            }
+            if (isset($groupData[$i]['fixed_discount'])){
+                $Group[$i]->setDiscountAmount($groupData[$i]['fixed_discount']);
+            } else {
+                $Group[$i]->setDiscountAmount($groupData[$i]['variable_discount']);
+
+            }
+        }
+
+        var_dump($groupID);
+
+        while ($groupID !== null) {
+            $groupsChain = $Group[12]->getGroupChain($groupID, $groupData);
+
+            array_push($groupArray, $groupsChain);
+            if (isset($groupsChain['group_id'])) {
+                // If the current group over which we are looping has a group ID
+                // we override the groupID variable with the new groupID of the former group.
+                $groupID = $groupsChain['group_id'];
+            } else {
+                $groupID = null;
+            }
+        }
+
+        var_dump($Group);
 
 
         require 'View/homepage.php';
