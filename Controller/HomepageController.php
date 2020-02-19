@@ -37,47 +37,15 @@ class HomepageController
             $originalPrice = "";
         }
 
-        $groupArray = [];
-
-
-        // groupId in this case refers to the group ID, which we know from user input (group id is linked).
-        // groupsArray refers to the associative array which we converted from groups.json (we named it $groupData some previous lines)
-//        function findGroup($groupId, $groupsArray)
-//        {
-//            foreach ($groupsArray as $group) {
-//                if ($group['id'] == $groupId) {
-//                    return $group;
-//                }
-//            }
-//        }
-//
-//
-//        // Using the findGroup function which returns a single group, which the user belongs to
-//        // we find other groups, which are linked together.
-//        while ($groupID !== null) {
-//            $groupsChain = findGroup($groupID, $groupData);
-//
-//            array_push($groupArray, $groupsChain);
-//            if (isset($groupsChain['group_id'])) {
-//                // If the current group over which we are looping has a group ID
-//                // we override the groupID variable with the new groupID of the former group.
-//                $groupID = $groupsChain['group_id'];
-//            } else {
-//                $groupID = null;
-//            }
-//        }
-
-
-        for ($i = 0; count($CustomerData) > $i; $i++) {
-            $User[$i] = new User($CustomerData[$i]['name'], strval($CustomerData[$i]['id']), strval($CustomerData[$i]['group_id']));
-        }
-
         for ($i = 0; count($ProductData) > $i; $i++) {
             $Product[$i] = new Products($ProductData[$i]['name'], strval($ProductData[$i]['id']), strval($ProductData[$i]['description']), strval($ProductData[$i]['price']));
         }
 
         for ($i = 0; count($groupData) > $i; $i++) {
             $Group[$i] = new Group(strval($groupData[$i]['id']), $groupData[$i]['name']);
+        }
+        for ($i = 0; count($CustomerData) > $i; $i++) {
+            $User[$i] = new User($CustomerData[$i]['name'], strval($CustomerData[$i]['id']), strval($CustomerData[$i]['group_id']));
         }
 
 
@@ -98,22 +66,18 @@ class HomepageController
             }
         }
 
-        var_dump($groupID);
+//        var_dump($groupID);
+        $userGroupChain = [];
+        for ($i = 0; count($User) > $i; $i++) {
 
-        while ($groupID !== null) {
-            $groupsChain = $Group[12]->getGroupChain($groupID, $groupData);
-
-            array_push($groupArray, $groupsChain);
-            if (isset($groupsChain['group_id'])) {
-                // If the current group over which we are looping has a group ID
-                // we override the groupID variable with the new groupID of the former group.
-                $groupID = $groupsChain['group_id'];
-            } else {
-                $groupID = null;
-            }
+            $Group[$i]->getChain($i, $groupData);
+            array_push($userGroupChain, $Group[$i]->groupChain);
+            $User[$i]->setGroupChain($userGroupChain[$i]);
         }
+        var_dump($User[1]);
 
-        var_dump($Group);
+        var_dump($User[1]->calculatePrice($originalPrice));
+
 
 
         require 'View/homepage.php';

@@ -17,7 +17,7 @@
 
         <select id="customers" name="customers">
             <?php for ($i = 0; count($User) > $i; $i++) : ?>
-                <option value="<?php echo $User[$i]->getGroupId(); ?>"><?php echo $User[$i]->getName(); ?></option>
+                <option value="<?php echo $User[$i]->getId(); ?>"><?php echo $User[$i]->getName(); ?></option>
             <?php endfor ?>
         </select>
     </br></br></br></br>
