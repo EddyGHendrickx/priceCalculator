@@ -1,6 +1,10 @@
 <?php
-declare(strict_types=1);
+declare(strict_types=1)
+    ?>
 
+<link rel='stylesheet' type='text/css' href='style.css' />
+
+<?php
 //include all your model files here
 require 'Model/User.php';
 //include all your controllers here
