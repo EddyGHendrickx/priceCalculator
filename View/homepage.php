@@ -35,9 +35,9 @@
 
         <select id="products" name="product">
             <?php for ($i = 0; count($Product) > $i; $i++) : ?>
-            <?php if ($i == $_POST['customers']) :?>
+            <?php if ($i == $productId[0]) :?>
 
-            <option value="<?php echo $Product[$i]->getPrice(); ?>"
+            <option value="<?php echo $Product[$i]->getPrice();?>"
                     name="products" selected="selected"><?php echo $Product[$i]->getName(); ?></option>
                 <?php else: ?>
                     <option value="<?php echo $Product[$i]->getPrice(); ?>"
