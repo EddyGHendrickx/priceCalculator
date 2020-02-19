@@ -70,13 +70,14 @@ class HomepageController
         $userGroupChain = [];
         for ($i = 0; count($User) > $i; $i++) {
 
-            $Group[$i]->getChain($i, $groupData);
+            $Group[$i]->getChain($User[$i]->getGroupId(), $groupData);
             array_push($userGroupChain, $Group[$i]->groupChain);
             $User[$i]->setGroupChain($userGroupChain[$i]);
         }
-        var_dump($User[1]);
+        if (isset($_POST['customers'])){
+           $priceAfterDiscount = $User[$groupID]->calculatePrice($originalPrice);
+        }
 
-        var_dump($User[1]->calculatePrice($originalPrice));
 
 
 

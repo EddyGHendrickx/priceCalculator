@@ -33,6 +33,8 @@
 
 
     <p>€<?php echo $originalPrice ?? "" ?></p>
+    <p>€<?php echo $priceAfterDiscount ?? "" ?></p>
+
 
 
     <p>Put your content here.</p>

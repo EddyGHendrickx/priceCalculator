@@ -51,6 +51,9 @@ class User
             }
         }
         $newPrice = ($price - $this->fixedDiscount)*(1-(($this->variableDiscount/100)));
+        if ($newPrice < 0){
+            $newPrice = 0;
+        }
         return $newPrice;
     }
 }
