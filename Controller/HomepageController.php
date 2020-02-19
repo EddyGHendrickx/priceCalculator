@@ -62,14 +62,14 @@ class HomepageController
                 $Group[$i]->setDiscountAmount($groupData[$i]['fixed_discount']);
             } else {
                 $Group[$i]->setDiscountAmount($groupData[$i]['variable_discount']);
-
             }
         }
 
-//        var_dump($groupID);
         $userGroupChain = [];
-        for ($i = 0; count($User) > $i; $i++) {
 
+        //Linking group chain to users
+
+        for ($i = 0; count($User) > $i; $i++) {
             $Group[$i]->getChain($User[$i]->getGroupId(), $groupData);
             array_push($userGroupChain, $Group[$i]->groupChain);
             $User[$i]->setGroupChain($userGroupChain[$i]);
@@ -77,7 +77,6 @@ class HomepageController
         if (isset($_POST['customers'])){
            $priceAfterDiscount = $User[$groupID]->calculatePrice($originalPrice);
         }
-
 
 
 

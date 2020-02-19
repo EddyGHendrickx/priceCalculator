@@ -35,6 +35,17 @@
     <p>€<?php echo $originalPrice ?? "" ?></p>
     <p>€<?php echo $priceAfterDiscount ?? "" ?></p>
 
+<!--    --><?php
+//     echo $originalPrice ?? ""  AKA:
+
+
+//    if (isset($originalPrice)){
+//        echo $originalPrice;
+//    } else {
+//        echo "";
+//    }
+
+    ?>
 
 
     <p>Put your content here.</p>
