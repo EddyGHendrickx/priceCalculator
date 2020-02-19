@@ -30,9 +30,14 @@ class HomepageController
         } else {
             $groupID = "";
         }
-
         if (isset($_POST['product'])) {
             $originalPrice = $_POST['product'];
+            $productId = [];
+            for ($i = 0; count($ProductData) > $i; $i++){
+                if ($ProductData[$i]['price'] == $_POST['product']){
+                    array_push($productId, $ProductData[$i]['id']);
+                }
+            }
         } else {
             $originalPrice = "";
         }
@@ -77,7 +82,6 @@ class HomepageController
         if (isset($_POST['customers'])){
            $priceAfterDiscount = $User[$groupID]->calculatePrice($originalPrice);
         }
-
 
 
         require 'View/homepage.php';
