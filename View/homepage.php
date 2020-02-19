@@ -11,18 +11,24 @@
 </head>
 <body>
 
-<?php require 'includes/header.php'; ?>
-
+<?php require 'includes/header.php'; ?><section>
+    
+</section>
 <section>
     <form action="" method="post">
+        <br><br>
+        <img id="people" src="https://i.imgur.com/je9MiHp.png" height="170px" alt="customer">
+        <br><br>
         <label for="customers">Choose a customer</label>
-
         <select id="customers" name="customers">
             <?php for ($i = 0; count($User) > $i; $i++) : ?>
                 <option value="<?php echo $User[$i]->getId(); ?>"><?php echo $User[$i]->getName(); ?></option>
             <?php endfor ?>
         </select>
-    </br></br></br></br>
+
+    <br><br><br>
+        <img src="https://i.imgur.com/SP6iPPN.png" height="130px" alt="">
+        <br><br>
         <label for="customers">Choose a product</label>
 
         <select id="products" name="product">
@@ -30,15 +36,13 @@
                 <option value="<?php echo $Product[$i]->getPrice(); ?>" name="products"><?php echo $Product[$i]->getName(); ?></option>
             <?php endfor ?>
         </select>
+        <br><br><br>
         <button id="run" type="submit" name="submit">SEARCH</button>
     </form>
 
-    <section>
-        <img src="https://i.imgur.com/iX4XaUQ.png" height="130 px;">
-    </section>
 
-    <p>€<?php echo $originalPrice ?? "" ?></p>
-    <p>€<?php echo $priceAfterDiscount ?? "" ?></p>
+    <p>The original price is: €<?php echo $originalPrice ?? "" ?></p>
+    <p> You pay (discounted price): €<?php echo $priceAfterDiscount ?? "" ?></p>
 
 <!--    --><?php
 //     echo $originalPrice ?? ""  AKA:
@@ -53,8 +57,11 @@
     ?>
 
 
-    <p>Put your content here.</p>
+    <p>Thank you for shopping with us!</p>
 </section>
+<br>
+<br>
+
 <?php require 'includes/footer.php' ?>
 </body>
 </html>
