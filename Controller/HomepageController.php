@@ -5,11 +5,11 @@ ini_set('display_startup_errors', '1');
 error_reporting(E_ALL);
 
 
-$jsonCustomer = file_get_contents('JSON/customers.json');
+$jsonCustomer = file_get_contents('../JSON/customers.json');
 $CustomerData = json_decode($jsonCustomer, true);
-$jsonGroup = file_get_contents('JSON/groups.json');
+$jsonGroup = file_get_contents('../JSON/groups.json');
 $groupData = json_decode($jsonGroup, true);
-$jsonProduct = file_get_contents('JSON/products.json');
+$jsonProduct = file_get_contents('../JSON/products.json');
 $ProductData = json_decode($jsonProduct, true);
 
 
@@ -72,5 +72,5 @@ if (isset($_POST['customers'])) {
 }
 
 
-require 'View/homepage.php';
+//require '../View/homepage.php';
 

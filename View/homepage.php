@@ -11,7 +11,21 @@
 </head>
 <body>
 
-<?php require 'includes/header.php'; ?>
+<?php
+ini_set('display_errors', '1');
+ini_set('display_startup_errors', '1');
+error_reporting(E_ALL);
+//require 'includes/header.php';
+//
+////included all model files here
+require '../Model/User.php';
+require '../Model/Group.php';
+require '../Model/Product.php';
+//
+////included all controllers here
+require '../Controller/HomepageController.php';
+
+?>
 <section>
 
 </section>
