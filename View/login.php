@@ -54,15 +54,12 @@
 
           </select>
           <!--<input type="text" "required" placeholder="Name"> -->
-          <br> <br>
-          <label for="password">Enter password:</label>
 
-          <label>
-              <input type="password" "required" placeholder = "Password">
-          </label>
           <br> <br>
 
-       <!-- <button type="submit">Login</button> -->
+          <label for="userPassword">Password: </label>
+          <input id="userPassword" type="password" required>
+
        </form>
     <form>
         <input type="button" value="Login" onclick="window.location.href='http://pricecalculator.local/'" />
