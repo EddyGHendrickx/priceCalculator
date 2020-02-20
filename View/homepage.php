@@ -37,7 +37,7 @@
 
     <br><br><br>
         <img src="https://i.imgur.com/SP6iPPN.png" height="130px" alt="">
-        <br><br>
+        <br>
 
         <label for="customers">Choose a product</label>
 
@@ -72,7 +72,6 @@
     //    }
 
     ?>
-
 
     <p>Thank you for shopping with us!</p>
 </section>
