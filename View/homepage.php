@@ -47,7 +47,7 @@
 
             <option value="<?php echo $Product[$i]->getPrice();?>"
                     name="products" selected="selected"><?php echo $Product[$i]->getName(); ?></option>
-                <?php else: ?>
+                <?php else : ?>
                     <option value="<?php echo $Product[$i]->getPrice(); ?>"
                             name="products"><?php echo $Product[$i]->getName(); ?></option>
             <?php endif ?>

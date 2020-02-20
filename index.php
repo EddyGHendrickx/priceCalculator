@@ -1,16 +1,16 @@
 <?php
 declare(strict_types=1)
-    ?>
+?>
 
 <link rel='stylesheet' type='text/css' href='style.css' />
 
 <?php
-//include all your model files here
+//included all model files here
 require 'Model/User.php';
-//include all your controllers here
+require 'Model/Group.php';
+require 'Model/Product.php';
+
+//included all controllers here
 require 'Controller/HomepageController.php';
 
-//you could write a simple IF here based on some $_GET or $_POST vars, to choose your controller
-//this file should never be more than 20 lines of code!
-$controller = new HomepageController();
-$controller->render($_GET, $_POST);
+
