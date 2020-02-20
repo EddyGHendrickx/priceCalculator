@@ -11,12 +11,12 @@
 </head>
 <body>
 
-<?php require 'includes/header.php'; ?><section>
-    
+<?php require 'includes/header.php'; ?>
+<section>
+
 </section>
 <section>
     <form action="" method="post">
-        <br><br>
         <img id="people" src="https://i.imgur.com/je9MiHp.png" height="170px" alt="customer">
         <br><br>
         <label for="customers">Choose a customer</label>
@@ -46,10 +46,10 @@
             <?php if ($i == $productId[0]) :?>
 
             <option value="<?php echo $Product[$i]->getPrice();?>"
-                    name="products" selected="selected"><?php echo $Product[$i]->getName(); ?></option>
+                    name="products" selected="selected"><?php echo ucfirst($Product[$i]->getName()); echo ":       €".$Product[$i]->getPrice(); ?></option>
                 <?php else : ?>
                     <option value="<?php echo $Product[$i]->getPrice(); ?>"
-                            name="products"><?php echo $Product[$i]->getName(); ?></option>
+                            name="products"><?php echo ucfirst($Product[$i]->getName()); echo ":       €".$Product[$i]->getPrice(); ?></option>
             <?php endif ?>
             <?php endfor ?>
         </select>
@@ -76,8 +76,6 @@
 
     <p>Thank you for shopping with us!</p>
 </section>
-<br>
-<br>
 
 <?php require 'includes/footer.php' ?>
 </body>
